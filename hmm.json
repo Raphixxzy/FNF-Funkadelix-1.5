@@ -84,11 +84,11 @@
       "url": "https://github.com/ShadowMario/flxanimate.git"
     },
     {
-      "name": "FNF-mobile-basetools",
+      "name": "extension-androidtools",
       "type": "git",
       "dir": null,
       "ref": "SAF",
-      "url": "https://github.com/MobilePorting/FNF-mobile-basetools.git"
+      "url": "https://github.com/MAJigsaw77/extension-androidtools.git"
     },
     {
       "name": "funkin.vis",
