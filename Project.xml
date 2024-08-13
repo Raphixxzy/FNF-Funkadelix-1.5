@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Funkadelix" file="FunkadelixV1.5" packageName="com.raphaffzyx.funkadelixmobile" package="com.NovaFlareEngine" main="Main" version="1.5" company="beihu" />
+	<app title="Funkadelix" file="FunkadelixV1.5" packageName="com.raphaffzyx.funkadelixmobile" package="com.raphaffzyx.fumkadelixmobile" main="Main" version="1.5" company="beihu" />
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
 
