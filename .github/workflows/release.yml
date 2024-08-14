@@ -122,47 +122,9 @@ jobs:
           name: androidBuild-${{ matrix.storage-type }}
           path: export/release/android/bin/app/build/outputs/apk/release/*.apk
           if-no-files-found: error
-  iOS:
-    runs-on: macos-13
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
 
-      - name: Setup Haxe
-        uses: krdlab/setup-haxe@master
-        with:
-          haxe-version: 4.3.4
-
-      - name: Install Libraries
-        run: |
-          haxelib setup ~/haxelib
-          haxelib install hmm --quiet
-          haxelib run hmm install --quiet
-
-      - name: Compile
-        run: haxelib run lime build ios -D NOVIDEO
-
-      - name: Make Ipa
-        run: |
-          cd export/release/ios/build/*-iphoneos
-          mkdir Payload
-          mv *.app Payload
-          zip -r "NovaFlare Engine.ipa" Payload
-
-      - name: Make Zip For Release
-        run: |
-           cd export/release/ios/build/Release-iphoneos
-           zip "NovaFlare Engine.zip" "NovaFlare Engine.ipa"
-
-      - name: Upload Artifact
-        if: ${{ success() }}
-        uses: actions/upload-artifact@main
-        with:
-          name: iOSBuild
-          path: export/release/ios/build/Release-iphoneos/*.zip
-          if-no-files-found: error
   Releaser:
-    needs: [Android, iOS, macOS, Windows]
+    needs: [Android, macOS, Windows]
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
@@ -200,16 +162,7 @@ jobs:
            path: /home/runner
 
       - name: Move MEDIA File
-        run: mv "/home/runner/NovaFlare Engine-release.apk" "/home/runner/android-MEDIA.apk"
-
-      - name: Download iOS Build
-        uses: actions/download-artifact@main
-        with:
-           name: iOSBuild
-           path: /home/runner
-      
-      - name: Move iOS File
-        run: mv "/home/runner/NovaFlare Engine.zip" "/home/runner/ios.zip"
+        run: mv "/home/runner/NovaFlare Engine-release.apk" "/home/runner/android-MEDIA.apk
   
       - name: Download macOS12 Build
         uses: actions/download-artifact@main
@@ -233,9 +186,9 @@ jobs:
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          automatic_release_tag: "V1.1.4"
-          title: "V1.1.4"
+          prerelease: true
+          automatic_release_tag: "test01"
+          title: "devbuild01"
           files: |
             /home/runner/*.apk
             /home/runner/*.zip
