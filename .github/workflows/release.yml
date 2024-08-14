@@ -162,7 +162,7 @@ jobs:
            path: /home/runner
 
       - name: Move MEDIA File
-        run: mv "/home/runner/NovaFlare Engine-release.apk" "/home/runner/android-MEDIA.apk
+        run: mv "/home/runner/NovaFlare Engine-release.apk" "/home/runner/android-MEDIA.apk"
   
       - name: Download macOS12 Build
         uses: actions/download-artifact@main
